@@ -1,0 +1,7 @@
+numpy
+os
+glob
+tensorflow>=2.3.0
+ismrmrd
+sigpy
+mpi4py
