@@ -1,9 +1,8 @@
 """Data preparation for training."""
-import os, glob
+import os, glob, io
 from tqdm import tqdm
 import subprocess
 import argparse
-import io.StringIO
 
 import mridata
 import tensorflow as tf
@@ -21,7 +20,7 @@ logger = utils.logging.logger
 def read_from_textfile(filename_txt):
   if isinstance(filename_txt, io.StringIO):
     return filename_txt.read()
-  else
+  else:
     return open(filename_txt).read()
 
 def download_mridata_org_dataset(filename_txt, dir_output):
