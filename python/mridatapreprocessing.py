@@ -1,9 +1,9 @@
 """Data preparation for training."""
-import os
-import glob
+import os, glob
 from tqdm import tqdm
 import subprocess
 import argparse
+import io.StringIO
 
 import mridata
 import tensorflow as tf
@@ -18,6 +18,11 @@ from utils import mri
 
 logger = utils.logging.logger
 
+def read_from_textfile(filename_txt):
+  if isinstance(filename_txt, io.StringIO):
+    return filename_txt.read()
+  else
+    return open(filename_txt).read()
 
 def download_mridata_org_dataset(filename_txt, dir_output):
     """Download datasets from mridata.org if needed"""
@@ -30,7 +35,7 @@ def download_mridata_org_dataset(filename_txt, dir_output):
         logger.info(
             'Downloading data from mridata.org to {}...'.format(dir_output))
 
-    uuids = open(filename_txt).read().splitlines()
+    uuids = read_from_textfile(filename_txt).splitlines()
     for uuid in uuids:
         if not os.path.exists('{}/{}.h5'.format(dir_output, uuid)):
             mridata.download(uuid, folder=dir_output)
