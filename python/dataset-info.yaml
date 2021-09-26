@@ -1,0 +1,5 @@
+maxsize: 
+  Nx: 384
+  Ny: 616
+batchsize: 64
+pickle_batch_root: "F:/MohammadRaziei/project/Dataset/pickle_batch_root"
